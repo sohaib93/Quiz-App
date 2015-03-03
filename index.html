@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+      <head>
+     	<title>QUIZ GAME</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+      	<link href="main.css" rel="stylesheet" type="text/css"/>
+      	<script src="jquery.js"></script>
+      	<script src="logic.js"></script>
+
+      </head>
+      <body>
+	  
+	  <div data-role="page" id="pageone" style="background-image: url(bg.png); height: 100%; width: 100%;">
+		<div data-role="header" align="middle">
+			QUIZ APP
+		</div>
+
+		<div  class="ui-content" >
+			<ul data-role="listview">
+				<li>
+					<a href="#start">Start</a>
+				</li>
+				<li>
+					 <a href="#instructions">Instructions</a>
+				</li>
+				<li>
+					 <a href="#quit">Quit</a>
+				</li>
+			</ul>
+		</div>
+
+		 <div data-role="footer">
+			<h1>All rights reserved.</h1>
+		 </div>
+	</div> 
+	
+	<div data-role="page" id="start" style="background-image: url(bg.png); height: 100%; width: 100%;">
+      	<div id="topbar">QUIZ GAME</div>
+		<div class="spacer"></div>
+		<div id="navContent">
+		<span id="countdown" class="timer" align="center" style="color:white ; font-size: 200%" ></span>
+			<script>
+			var seconds = 60;
+			function secondPassed() 
+			{
+				var remainingSeconds = seconds % 60;
+				if (remainingSeconds < 10) 
+				{
+					document.getElementById('countdown').style.color = "red";
+					remainingSeconds = "0" + remainingSeconds;  
+				}
+				else
+				{
+					document.getElementById('countdown').style.color = "green";
+				}
+				document.getElementById('countdown').innerHTML = remainingSeconds;
+				if (seconds == 0) 
+				{
+					clearInterval(countdownTimer);
+					document.getElementById('countdown').innerHTML = "Time is up";
+				} else {
+					seconds--;
+				}
+			}
+			var countdownTimer = setInterval('secondPassed()', 1000);
+			</script>
+			<div id="game1"></div>
+			<div id="game2"></div>
+		</div>
+	</div>
+      </body>
+</html>
